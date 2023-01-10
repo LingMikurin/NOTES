@@ -12,7 +12,7 @@
 - [TodoList代码优化。构造函数中绑定 this](#构造函数中绑定this)
 - [新版setState()使用](#新版setState()使用)
 - [父组件和子组件之间的通信方式](#父组件和子组件之间的通信方式)
-- [Prop Types 与 DefaultProps](#Junior version0.4.2 😂 组件TodoItem设置 Prop Types 与 DefaultProps)
+- [Prop Types 与 DefaultProps](#junior-version0.4.2)
 - [props, state and render](#props, state and render)
 - [虚拟DOM](#虚拟DOM)
 - [ref 的应用](#Junior version0.4.7 😂 TodoList 中 ref 的应用)
