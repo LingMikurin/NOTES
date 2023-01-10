@@ -1631,17 +1631,17 @@ Postman 是一款轻量级的 HTTP 客户端，可以方便地发送 HTTP 请求
 在 componentDidMount 生命周期函数中发送 ajax 请求是一种常见的做法。componentDidMount 是在组件已经挂载到 DOM 上后执行的函数，所以在这里发送 ajax 请求是一个好的选择，因为在组件挂载到 DOM 后才会发送请求，避免了发送请求的浪费。另外，在 componentDidMount 中发送 ajax 请求，也可以保证请求完成后，组件的状态已经被正确地设置。
 
   
-  ✅last edited 30 Noc 2023
+  ✅last edited 30 Noc 2022
   
-  ✅last edited 6 Dec 2023
+  ✅last edited 6 Dec 2022
   
-  ✅last edited 13 Dec 2023
+  ✅last edited 13 Dec 2022
 
-  ✅last edited 16 Dec 2023
+  ✅last edited 16 Dec 2022
 
-  ✅last edited 19 Dec 2023
+  ✅last edited 19 Dec 2022
 
-  ✅last edited 23 Dec 2023
+  ✅last edited 23 Dec 2022
 
   ✅last edited 1 Jan 2023
 
