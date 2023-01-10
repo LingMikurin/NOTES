@@ -2,7 +2,7 @@
 - [开发环境搭建](#最开始还是从开发环境搭建开始)
 - [Import Component](#Import Component)
 - [React项目TodoList](#React项目TodoList)
-- [super(props)](#super)
+- [super(props)](#super(props))
 - [最原始 Junior version0.3.3](#最原始 Junior version0.3.3 😂)
 - [immutable](#immutable)
 - [回调函数index相关](#回调函数index相关)
