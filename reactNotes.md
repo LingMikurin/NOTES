@@ -7,7 +7,7 @@
 - [immutable](#immutable)
 - [回调函数index相关](#回调函数index相关)
 - [题外话createRoot](#题外话createRoot)
-- [Fragment组件化搭建](#Junior version0.3.4 😂Fragment组件化搭建部分。)
+- [Fragment组件化搭建](#Fragment组件化搭建部分)
 - [this绑定](#this绑定)
 - [TodoList代码优化。构造函数中绑定 this](#构造函数中绑定this)
 - [新版setState()使用](#新版setState()使用)
