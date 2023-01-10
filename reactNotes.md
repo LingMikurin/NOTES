@@ -4,7 +4,7 @@
 - [Component 的导入](#component-的导入)
 - [React 项目 TodoList](#react-项目-todolist)
 - [super(props)](#super-应用)
-- [最原始 Junior version0.3.3](#最原始-junior-version0.3.3)
+- [最原始 Junior version0.3.3](#最原始-junior)
 - [immutable](#immutable)
 - [回调函数 index 相关](#回调函数index相关)
 - [题外话 createRoot](#题外话createRoot)
