@@ -233,7 +233,7 @@ export default MyComponent;
 
 
 ---------
-## React项目TodoList。
+## React项目TodoList
 这个组件由一个构造函数和一个 render 函数组成。
 ```js
 import React, { Component, Fragment } from 'react'
