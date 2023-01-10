@@ -1764,3 +1764,100 @@ console.log(multiply(2, 3)) // 6
 React Native 是一个开源框架，可以让你使用 JavaScript 和 React 来开发移动应用，而无需使用原生代码（如 Java 或 Swift）。它的目的是让你能够使用一套代码来开发多个平台（如 iOS 和 Android）的应用，而不需要为每个平台编写单独的代码。
 
 与传统的 Web 应用不同，原生应用可以直接与设备的硬件和操作系统交互，并可以使用本地的 API 和功能（如访问相机、位置服务等）。由于它们是原生的，所以也更加流畅和自然，体验更好。
+---  
+## 原始版本完整代码
+
+  ### TodoList.js
+  ```js
+  
+import React, { Component, Fragment } from "react";
+import "./style.css";
+import TodoItem from "./TodoItem";
+
+class TodoList extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      inputValue: "",
+      list: []
+    };
+  }
+
+  render() {
+    return (
+      <Fragment>
+        <div>
+          <label htmlFor="insertArea">输入内容</label>
+          <input
+            id="insertArea"
+            className="input"
+            value={this.state.inputValue}
+            onChange={this.handleInputChange.bind(this)}
+          />
+          <button onClick={this.handleBtnClick.bind(this)}>提交</button>
+        </div>
+        <ul>
+          {this.state.list.map((item, index) => {
+            return (
+              <div>
+                <TodoItem
+                  content={item}
+                  index={index}
+                  deleteItem={this.handleItemDelete.bind(this)}
+                />
+              </div>
+            );
+          })}
+        </ul>
+      </Fragment>
+    );
+  }
+
+  handleInputChange(e) {
+    this.setState({
+      inputValue: e.target.value
+    });
+  }
+
+  handleBtnClick() {
+    this.setState({
+      list: [...this.state.list, this.state.inputValue],
+      inputValue: ""
+    });
+  }
+
+  handleItemDelete(index) {
+    const list = [...this.state.list];
+    list.splice(index, 1);
+    this.setState({
+      list: list
+    });
+  }
+}
+
+export default TodoList;
+
+```
+  
+  TodoItem.js
+```js
+  import React, { Component } from "react";
+
+class TodoItem extends Component {
+  constructor(props) {
+    super(props);
+    this.handleClick = this.handleClick.bind(this);
+  }
+
+  render() {
+    return <div onClick={this.handleClick}>{this.props.content}</div>;
+  }
+
+  handleClick() {
+    this.props.deleteItem(this.props.index);
+  }
+}
+
+export default TodoItem;
+
+  ```
