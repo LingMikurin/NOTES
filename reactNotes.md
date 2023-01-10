@@ -1,7 +1,29 @@
 # 寒哥手记
+- [开发环境搭建](#最开始还是从开发环境搭建开始)
+- [Import Component](#Import Component)
+- [React项目TodoList](#React项目TodoList)
+- [super(props)](#super(props))
+- [最原始 Junior version0.3.3](#最原始 Junior version0.3.3 😂)
+- [immutable](#immutable)
+- [回调函数index相关](#回调函数index相关)
+- [题外话createRoot](#题外话createRoot)
+- [Fragment组件化搭建](#Junior version0.3.4 😂Fragment组件化搭建部分。)
+- [this绑定](#this绑定)
+- [TodoList代码优化。构造函数中绑定 this](#构造函数中绑定 this)
+- [新版setState()使用](#新版setState()使用)
+- [父组件和子组件之间的通信方式](#父组件和子组件之间的通信方式)
+- [Prop Types 与 DefaultProps](#Junior version0.4.2 😂 组件TodoItem设置 Prop Types 与 DefaultProps)
+- [props, state and render](#props, state and render)
+- [虚拟DOM](#虚拟DOM)
+- [ref 的应用](#Junior version0.4.7 😂 TodoList 中 ref 的应用)
+- [生命周期函数](#生命周期函数)
+- [Junior version0.4.9运用生命周期性能优化，引入ajax](#Junior version0.4.9 😂)
+- [ajax ，axios的应用](#Junior version0.4.10 😂 TodoList 中 ajax ，axios的应用)
+- [零碎知识点](#🌈🌈🌈 插入补充零碎知识点 🌈🌈🌈)
+
 ## 此记录了个人React的自学过程，并配合一个小项目TodoList来学习，手记中有原始版本代码和最终优化版本，可以提前跳转页尾查看，也可以跟着手记走。
 ---------
-## 最开始还是从环境开发搭建开始：
+## 最开始还是从开发环境搭建开始：
 
 ### 脚手架搭建：
 ```js
@@ -211,7 +233,7 @@ export default MyComponent;
 
 
 ---------
-## React 组件 TodoList。
+## React项目TodoList。
 这个组件由一个构造函数和一个 render 函数组成。
 ```js
 import React, { Component, Fragment } from 'react'
@@ -498,7 +520,7 @@ const list = [...this.state.list];
 
 
 
-### 题外话
+### 题外话createRoot 
 ```js
 ReactDOM.render is no longer supported in React 18.
 
@@ -581,7 +603,7 @@ dangerouslySetInnerHTML 是 React 中的一个属性，它的作用是将字符�
 
 ---------
 
-## Junior version0.3.4 😂
+## Junior version0.3.4 😂Fragment组件化搭建部分。
 
 
 
@@ -591,7 +613,7 @@ dangerouslySetInnerHTML 是 React 中的一个属性，它的作用是将字符�
 
 
 
-Fragment组件化搭建部分。
+
 
 
 ### ⛔️ before ⛔️
@@ -688,10 +710,10 @@ class TodoItem extends Component {
 }
 
 export default TodoItem;
+```
 
-
-this绑定放入constructor来实现
-
+### this绑定
+```js
 import React, { Component } from "react";
 
 class TodoItem extends Component {
@@ -711,7 +733,7 @@ class TodoItem extends Component {
 
 
 ---------
-## Junior version0.3.6 😂
+## Junior version0.3.6 😂 组件TodoItem代码优化。
 
 
 
@@ -723,7 +745,7 @@ class TodoItem extends Component {
 
 
 
-组件TodoItem部分代码优化。
+
 
 ### ⛔️ before ⛔️
 ```js
@@ -779,10 +801,10 @@ export default TodoItem;
 
 ---------
 
-## 主体TodoList代码优化。
+## 主体TodoList代码优化。构造函数中绑定 this
 
 
-### 造函数中绑定 this 
+ 
 
 
 
@@ -868,7 +890,7 @@ getTodoItem() {
 ```
 
 
-### 新版setState()使用
+## 新版setState()使用
 ```js
 ⛔️ before ⛔️
 
@@ -947,7 +969,8 @@ setState()如果传一个函数，这里会是一个异步的形式，我们需�
 
 
 
-### 在 React 中，父组件和子组件之间的通信主要有两种方式：
+### 父组件和子组件之间的通信方式
+在 React 中，父组件和子组件之间的通信主要有两种方式：
 
 
 
@@ -1060,7 +1083,7 @@ class ChildComponent extends React.Component {
 
 ---------
 
-## Junior version0.4.2 😂
+## Junior version0.4.2 😂 组件TodoItem设置 Prop Types 与 DefaultProps
 
 
 
@@ -1069,7 +1092,7 @@ class ChildComponent extends React.Component {
 
 ### 👌👌 change logs  👌👌
 
-### 组件TodoItem设置 Prop Types 与 DefaultProps
+
 
 
 
@@ -1313,13 +1336,13 @@ export default TodoList;
 
 ---------
 
-## Junior version0.4.7 😂
+## Junior version0.4.7 😂 TodoList 中 ref 的应用
 
 
 
 ### 👌👌 change logs  👌👌
 
-### TodoList 中 ref 的应用
+
 
 
 
@@ -1738,7 +1761,7 @@ Postman 是一款轻量级的 HTTP 客户端，可以方便地发送 HTTP 请求
 
 ---------
 
-## Junior version0.4.10 😂
+## Junior version0.4.10 😂 TodoList 中 ajax ，axios的应用
 
 
 
@@ -1748,7 +1771,6 @@ Postman 是一款轻量级的 HTTP 客户端，可以方便地发送 HTTP 请求
 
 
 
-### TodoList 中 ajax axios的应用
 
 
 
@@ -1785,12 +1807,16 @@ Postman 是一款轻量级的 HTTP 客户端，可以方便地发送 HTTP 请求
 ```
 
 在 componentDidMount 生命周期函数中发送 ajax 请求是一种常见的做法。componentDidMount 是在组件已经挂载到 DOM 上后执行的函数，所以在这里发送 ajax 请求是一个好的选择，因为在组件挂载到 DOM 后才会发送请求，避免了发送请求的浪费。另外，在 componentDidMount 中发送 ajax 请求，也可以保证请求完成后，组件的状态已经被正确地设置。
-
   
-  
+last edited 30 Noc 2023   
+last edited 6 Dec 2023 
+last edited 13 Dec 2023   
+last edited 16 Dec 2023
+last edited 19 Dec 2023 
+last edited 23 Dec 2023 
 last edited 1 Jan 2023 
 last edited 4 Jan 2023 
-last edited 8 Jan 2023 
+
 
 ---------
 ## 🌈🌈🌈 插入补充零碎知识点 🌈🌈🌈
