@@ -1,8 +1,8 @@
 # 寒哥手记
-## 此记录了个人React的自学过程，并配合一个小项目TodoList学习 手中有最原始版代码最终优化版本可以提前跳转查看，也可以跟着手记走。
+## 此记录了个人React的自学过程，并配合一个小项目TodoList来学习，手记中有最始版代码和最终优化版本，可以提前跳转页尾查看，也可以跟着手记走。
 ---------
 ## 最开始还是从环境开发搭建开始：
----------
+
 ### 脚手架搭建：
 ```js
 npx create-react-app my-app
@@ -36,55 +36,59 @@ Inside that directory, you can run several commands:
   cd 你的项目所在文件夹
   npm start
 ```
+---------
+
+
+### Import Component:
 
 
 
-import Component:
-
-
-
-由于使用jsx的原因 import 开头第一个字母大写，例：import React from 'react'
-
+### 由于使用jsx的原因 import 开头第一个字母大写，例：import React from 'react'
+```js
 import {Component} from 'react';
 等价原来再此之前版本写法：
-
+```
+```js
 import React from 'react'
 const Component = React.Component
+```
 
 
 
-
-将组件 TodoList 渲染到页面中 id 为 'root' 的元素中
-
+### 将组件 TodoList 渲染到页面中 id 为 'root' 的元素中
 
 
+```js
 import React from 'react';
 import ReactDOM from 'react-dom';
 import TodoList from './TodoList';
 
 ReactDOM.render(<TodoList />, document.getElementById('root'));
-使用 ReactDOM.createRoot() 函数渲染组件：
-
+```
+### 使用 ReactDOM.createRoot() 函数渲染组件：
+```js
 const root = document.getElementById('root');
 ReactDOM.createRoot(root).render(<TodoList />);
-继续精简：
-
+```
+### 继续精简：
+```js
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(<App />);
-补充StricMode：
-
+```
+### 补充StricMode：
+```js
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
 <React.StrictMode>
     <App />
   </React.StrictMode>
 );
+```
+
+### 定义了一个名为 App 的 React 组件
 
 
-定义了一个名为 App 的 React 组件
-
-
-
+```js
 import React, { Component } from "react";
 class App extends Component {
   render() {
@@ -93,8 +97,9 @@ class App extends Component {
 }
 
 export default App;
-也可以使用类的方式来写一个组件，例如：
-
+```
+### 也可以使用类的方式来写一个组件，例如：
+```js
 import React from "react";
 
 class App extends React.Component {
@@ -104,22 +109,24 @@ class App extends React.Component {
 }
 
 export default App;
-或者使用函数式组件的写法：
-
+```
+### 或者使用函数式组件的写法：
+```js
 const App = () => {
   return <div>Hello</div>;
 }
 
 export default App;
-也可以使用更简短的 JSX 语法：
-
+```
+### 也可以使用更简短的 JSX 语法：
+```js
 const MyComponent = () => <div>Hewwllo</div>;
 
 export default MyComponent;
+```
 
-
-补充点：
-
+### 补充点：
+```js
 //import React from 'react';
 
 export default () => <div>Hello</div>;
@@ -127,6 +134,7 @@ export default () => <div>Hello</div>;
 React 在 JSX 中是不需要被显式地导入的。这是因为 JSX 会被自动地转换成常规 JavaScript 调用，如：
 
 React.createElement('div', null, 'Hello')
+```
 所以，即使在不导入 React 的情况下使用 JSX，这段代码也会成功运行。
 
 
@@ -135,12 +143,12 @@ React.createElement('div', null, 'Hello')
 
 
 
-在 JavaScript 中，只有在你使用 JSX 标签时，才需要导入 React 库。如果你删除了导入 React 的代码，你不会使用任何 JSX 标签，所以你的代码不会有任何报错。
+### 在 JavaScript 中，只有在你使用 JSX 标签时，才需要导入 React 库。如果你删除了导入 React 的代码，你不会使用任何 JSX 标签，所以你的代码不会有任何报错。
 
 
 
 假设你有一个组件如下：
-
+```js
 import React from 'react';
 
 const MyComponent = () => {
@@ -150,20 +158,20 @@ const MyComponent = () => {
 }
 
 export default MyComponent;
-
+```
 
 在这个组件中，我们使用了 <div> 这个 JSX 标签。在使用 JSX 标签时，必须导入 React 库。所以你不能删除 import React from 'react'; 这行代码。
 
 
 
 如果你改变了组件的代码，使它不使用任何 JSX 标签，就可以删除 import React from 'react'; 这行代码。例如，你可以将组件改写为：
-
+```js
 const MyComponent = () => {
   return 'Hello, World!';
 }
 
 export default MyComponent;
-
+```
 
 在这个组件中，我们没有使用任何 JSX 标签。所以你可以删除导入 React 的代码。
 
@@ -177,8 +185,8 @@ JSX 语法使用了 React 元素，所以在使用 JSX 语法时需要引入 Rea
 
 
 
-如果你在函数式组件中使用了 JSX 语法，则必须引入 React，否则会报错。例如：
-
+### 如果你在函数式组件中使用了 JSX 语法，则必须引入 React，否则会报错。例如：
+```js
 import React from 'react';
 
 const MyComponent = () => {
@@ -186,6 +194,7 @@ const MyComponent = () => {
 };
 
 export default MyComponent;
+```
 在这段代码中，如果删除了 React 的引入语句，则会报错：'React' must be in scope when using JSX.
 
 
@@ -193,15 +202,18 @@ export default MyComponent;
 💣注意，函数式组件不能使用类的构造函数和render方法。
 
 另外，注意使用函数式组件时，你只能在组件函数的返回值中使用JSX语法，而不能在组件函数的其他地方使用。
+这是因为函数式组件不支持在组件内部更改状态，也不需要渲染周期方法，所以只需要一个纯函数来返回需要渲染的 JSX。
+因此，你不能在函数式组件内部使用 this 关键字，也不能使用生命周期方法或类中的其他方法。
 
 
 
 
 
 
-
- React 组件 TodoList。这个组件由一个构造函数和一个 render 函数组成。
-
+---------
+## React 组件 TodoList。
+这个组件由一个构造函数和一个 render 函数组成。
+```js
 import React, { Component, Fragment } from 'react'
 
 class TodoList extends Component {
@@ -230,12 +242,12 @@ class TodoList extends Component {
   }
 }
 export default TodoList
+```
 
-
-super(props)
+### super(props)
 
 类里面的constructor是优先第一个执行的：
-
+```js
 constructor(props) {
     super(props)
     this.state = {
@@ -243,6 +255,7 @@ constructor(props) {
       list: [],
     }
   }
+```
 在 JavaScript 中，super 是一个保留字，用于在一个子类的构造函数中引用父类的构造函数。
 
 
@@ -266,13 +279,14 @@ super(props) 是在 JavaScript 类中调用父类的构造函数的方法。它�
 例如，在上面的代码中，如果你想在子类中使用父类的属性 props，你就必须通过调用 super(props) 来实现。
 
 
-
+```js
 this.state
 
 this.state = {
       inputValue: 'hello',
       list: [],
     }
+```
 
 this.state是在 class 组件中所有组件实例都可以使用的特殊变量。它存储了组件当前的状态，并且可以通过调用 setState 方法来修改状态。
 
@@ -285,20 +299,21 @@ this.state是在 class 组件中所有组件实例都可以使用的特殊变量
 
 
 <input />里的数据和 this.state里的数据进行绑定
-
+```js
 <input value={this.state.inputValue} />
 jsx 语法中保存变量要加花括号。
+```
+
+---------
+## 下面手记内容需要结合TodoList代码来消化
 
 
 
-下面手记内容需要结合TodoList代码来消化
 
 
-
-
-
-最原始😂😂😂Junior version0.3.3😂😂😂(0.3.3前的版本属于基本开发环境准备，没存在我的笔记，记录在了我的sandbox)
-
+### 最原始 Junior version0.3.3 😂
+(0.3.3前的版本属于基本开发环境准备，没存在我的笔记，记录在了我的sandbox,有需求可以找我要)
+```js
 import React, { Component, Fragment } from "react";
 import "./style.css";
 
@@ -366,13 +381,13 @@ class TodoList extends Component {
 
 export default TodoList;
 
-
-immutable
+```
+### immutable
 
 state 不允许我们做任何的改变
 
 
-
+```js
   handleItemDelete(index) {
     // immutable
     // state 不允许我们做任何的改变
@@ -383,27 +398,29 @@ state 不允许我们做任何的改变
       list: list
     });
   }
-为了简化代码这段代码如下改写可以吗？：
+```
+为了简化代码这段代码如下改写可以吗？
 
 
-
+```js
 handleItemDelete(index) {
       this.state.list.splice(index,1)
       this.setState({
       list:list
       })
   }
+```
 和
-
+```js
 handleItemDelete(index) {
       this.state.list.splice(index,1)
       this.setState({
       list:this.state.list
       })
   }
+```
 
-
-state 不允许我们做任何的改变，因为会影响之后react之后的性能优化问题。
+### state 不允许我们做任何的改变，因为会影响之后react之后的性能优化问题。
 
 
 
@@ -420,12 +437,12 @@ state 不允许我们做任何的改变，因为会影响之后react之后的性
 
 
 如果非需要改变的时候自己拷贝出来一个副本
-
+```js
 const list = [...this.state.list];
+```
 
-
-回调函数index相关
-
+### 回调函数index相关
+```js
 <ul>
   {this.state.list.map((item, index) => {
     return (
@@ -437,9 +454,9 @@ const list = [...this.state.list];
     );
   })}
 </ul>;
+```
 
-
-key={index}
+### key={index}
 
 
 
@@ -464,7 +481,7 @@ key={index}
 
 
 示例代码：
-
+```js
 <ul>
   {this.state.list.map((item, index) => {
     return (
@@ -476,16 +493,17 @@ key={index}
     );
   })}
 </ul>;
+```
 这样，在列表中增加、删除或插入项目时，React 就可以准确地知道哪些项目发生了变化，并且只对这些项目进行重新渲染。
 
 
 
-题外话
-
+### 题外话
+```js
 ReactDOM.render is no longer supported in React 18.
 
 Use createRoot instead
-
+```
 
 
 使用 createRoot 来渲染组件的步骤如下：
@@ -493,20 +511,21 @@ Use createRoot instead
 
 
 1导入 createRoot 函数：
-
+```js
 import { createRoot } from 'react-dom';
-
+```
 
 2.创建根节点，并调用 createRoot 方法传入根节点：
 
+```js
 const root = document.getElementById('root');
 createRoot(root).render(<App />);
-
+```
 
 3.在需要更新组件时，调用 render 方法更新组件：
-
+```js
 createRoot(root).render(<App />);
-
+```
 
 注意：createRoot 只能在顶层使用，不能用于嵌套的组件。
 
@@ -514,28 +533,28 @@ createRoot(root).render(<App />);
 
 参考文档：
 
-createRoot - React  (链接有效)
+[createRoot - React  (链接有效)](https://reactjs.org/docs/react-dom.html#createroot)
 
 
 使用createRoot 方法改写下面代码：
-
+```js
 import React from "react";
 import ReactDOM from "react-dom";
 import TodoList from "./TodoList";
 
 ReactDOM.render(<TodoList />, document.getElementById("root"));
-
+```
 
 使用 createRoot 方法改写上面的代码：
-
+```js
 import React from "react";
 import { createRoot } from "react-dom";
 import TodoList from "./TodoList";
 
 createRoot(document.getElementById("root")).render(<TodoList />);
+```
 
-
-dangerouslySetInnerHTML={{ __html: item }}
+### dangerouslySetInnerHTML={{ __html: item }}
 
 
 
@@ -544,9 +563,9 @@ dangerouslySetInnerHTML={{ __html: item }}
 dangerouslySetInnerHTML 是 React 中的一个特殊属性，用来在渲染时直接将 HTML 代码插入到节点中。它的用法如下：
 
 
-
+```js
 <div dangerouslySetInnerHTML={{ __html: '<p>Some HTML code</p>' }} />
-
+```
 
 dangerouslySetInnerHTML 是 React 中的一个属性，它的作用是将字符串当作 HTML 设置到组件的内部。
 
@@ -560,23 +579,23 @@ dangerouslySetInnerHTML 是 React 中的一个属性，它的作用是将字符�
 
 
 
+---------
+
+## Junior version0.3.4 😂
 
 
-😂😂😂Junior version0.3.4😂😂😂
 
 
 
-
-
-👌👌 change logs  👌👌
+### 👌👌 change logs  👌👌
 
 
 
 Fragment组件化搭建部分。
 
 
-⛔️ before ⛔️
-
+### ⛔️ before ⛔️
+```js
 import React, { Component, Fragment } from 'react';
 import './style.css'
 
@@ -608,12 +627,12 @@ import './style.css'
 
 
 ...
+```
 
 
 
-
-✅ after ✅
-
+### ✅ after ✅
+```js
 import React, { Component, Fragment } from "react";
 import "./style.css";
 import TodoItem from "./TodoItem";
@@ -644,12 +663,13 @@ import TodoItem from "./TodoItem";
   </ul>
 </Fragment>;
 ...
+```
 
 
 
-
-加入 TodoItem组件
-
+### 加入 TodoItem组件
+(另外建立的一个js文档，看做是父类TodoList的子类，父类子类可以互相通信)
+```js
 import React, { Component } from "react";
 
 class TodoItem extends Component {
@@ -680,6 +700,7 @@ class TodoItem extends Component {
     this.handleClick = this.handleClick.bind(this);
   }
   ...
+```
 在构造函数中绑定 this 的好处是，可以避免在每个方法中单独绑定 this 的开销，可以提升性能。此外，在构造函数中绑定 this 还可以帮助你在整个组件中维护一致的 this 绑定，使得代码更加清晰易读。
 
 
@@ -689,23 +710,23 @@ class TodoItem extends Component {
 
 
 
-
-😂😂😂Junior version0.3.6😂😂😂
-
-
+---------
+## Junior version0.3.6 😂
 
 
 
 
 
-👌👌 change logs  👌👌
+
+
+### 👌👌 change logs  👌👌
 
 
 
 组件TodoItem部分代码优化。
 
-👎before
-
+### ⛔️ before ⛔️
+```js
 import React, { Component } from "react";
 
 class TodoItem extends Component {
@@ -724,11 +745,11 @@ class TodoItem extends Component {
 }
 
 export default TodoItem;
+```
 
 
-
-✅ after ✅
-
+### ✅ after ✅
+```js
 import React, { Component } from "react";
 class TodoItem extends Component {
   constructor(props) {
@@ -745,7 +766,7 @@ class TodoItem extends Component {
   }
 }
 export default TodoItem;
-
+```
 
 个人觉得使用对象解构语法可以使代码更加简洁和易读，对象解构语法允许你提取对象的属性，并将它们赋值给变量，这样就可以在组件的代码中直接使用这些变量。原方式是接访问对象属性的方式。
 
@@ -756,17 +777,17 @@ export default TodoItem;
 
 
 
+---------
 
-主体TodoList代码优化。
-
-
-
-造函数中绑定 this 
+## 主体TodoList代码优化。
 
 
+### 造函数中绑定 this 
 
-⛔️ before ⛔️
 
+
+### ⛔️ before ⛔️
+```js
 class TodoList extends Component {
   constructor(props) {
     super(props);
@@ -777,11 +798,11 @@ class TodoList extends Component {
   }
   
   ...
+```
 
 
-
-✅ after ✅
-
+### ✅ after ✅
+```js
 class TodoList extends Component {
   constructor(props) {
     super(props);
@@ -795,15 +816,15 @@ class TodoList extends Component {
   }
   
   ...
+```
 
 
 
+### 使用方法调用，避免JSX表达html页面显示内容的同时融和逻辑，避免代码冗长易于维护。
 
-使用方法调用，避免JSX表达html页面显示内容的同时融和逻辑，避免代码冗长易于维护。
 
-
-⛔️ before ⛔️
-
+### ⛔️ before ⛔️
+```js
 <Fragment>
   <div>...
   
@@ -821,9 +842,9 @@ class TodoList extends Component {
     })}
   </ul>
 </Fragment>;
+```
 
-
-
+```js
 ✅ after ✅
 
 <Fragment>
@@ -844,11 +865,11 @@ getTodoItem() {
     });
   }
 
+```
 
 
-
-新版setState()使用
-
+### 新版setState()使用
+```js
 ⛔️ before ⛔️
 
   handleInputChange(e) {
@@ -871,10 +892,10 @@ getTodoItem() {
       list: list
     });
   }
+```
 
-
-✅ after ✅
-
+### ✅ after ✅
+```js
   handleInputChange(e) {
     const value = e.target.value;
     this.setState(() => ({
@@ -896,15 +917,18 @@ getTodoItem() {
       return { list };
     });
   }
+```
 prevState 等价于 this.state
 
 
 
 新版的setState()可以接收函数
-
+```js
     this.setState(() => ({
       inputValue: value
     }));
+  
+ ```
 setState()如果传一个函数，这里会是一个异步的形式，我们需要事先保存inputValue的值。
 
 
@@ -923,7 +947,7 @@ setState()如果传一个函数，这里会是一个异步的形式，我们需�
 
 
 
-在 React 中，父组件和子组件之间的通信主要有两种方式：
+### 在 React 中，父组件和子组件之间的通信主要有两种方式：
 
 
 
@@ -932,7 +956,7 @@ setState()如果传一个函数，这里会是一个异步的形式，我们需�
 子组件通过调用父组件传递过来的回调函数向父组件发送消息
 
 第一种方式，父组件通过 props 向子组件传递数据，是通过在渲染子组件的时候将数据作为子组件的 props 传递进去。例如：
-
+```js
 import React, { Component } from 'react';
 
 class Parent extends Component {
@@ -953,7 +977,7 @@ class Child extends Component {
     );
   }
 }
-
+```
 
 在上面的代码中，Parent 组件通过在渲染 Child 组件的时候将 name 和 age 作为 props 传递进去，Child 组件就可以通过 this.props 访问到这些数据。
 
@@ -966,23 +990,23 @@ class Child extends Component {
 
 
 父组件中定义回调函数：
-
+```js
 handleChildValueChange = value => {
   this.setState({ childValue: value });
 };
 
-
+```
 在父组件的 render 方法中通过 props 传递回调函数给子组件：
-
+```js
 <ChildComponent onValueChange={this.handleChildValueChange} />
-
+```
 
 子组件中触发事件时调用回调函数：
-
+```js
 handleClick = () => {
   this.props.onValueChange('new value');
 };
-
+```
 
 这种方式的优点是可以在父组件中自定义回调函数的行为，从而达到更新父组件状态的目的。缺点是需要在父组件和子组件之间传递较多的 props，如果组件层次较多，可能会比较麻烦。
 
@@ -993,7 +1017,7 @@ One more 例子：
 
 
 首先，我们有一个父组件 ParentComponent，它包含一个状态变量 message，和一个方法 updateMessage。updateMessage 方法接收一个参数，并将其设置为组件的 message 状态变量。
-
+```js
 class ParentComponent extends React.Component {
   state = {
     message: "Hello, world!"
@@ -1013,10 +1037,10 @@ class ParentComponent extends React.Component {
     );
   }
 }
-
+```
 
 然后，我们有一个子组件 ChildComponent，它希望能够向父组件发送消息，更新父组件的 message 状态变量。我们可以将 updateMessage 方法作为属性传递给子组件，让子组件在需要的时候调用这个方法。
-
+```js
 class ChildComponent extends React.Component {
   handleClick = () => {
     // 调用父组件传递过来的方法
@@ -1031,26 +1055,27 @@ class ChildComponent extends React.Component {
     );
   }
 }
+```
+
+
+---------
+
+## Junior version0.4.2 😂
 
 
 
 
-😂😂😂Junior version0.4.2😂😂😂
+
+
+### 👌👌 change logs  👌👌
+
+### 组件TodoItem设置 Prop Types 与 DefaultProps
 
 
 
+### ⛔️ before ⛔️
 
-
-
-👌👌 change logs  👌👌
-
-组件TodoItem设置 Prop Types 与 DefaultProps
-
-
-
-⛔️ before ⛔️
-
-
+```js
 import React, { Component } from "react";
 
 class TodoItem extends Component {
@@ -1071,10 +1096,10 @@ class TodoItem extends Component {
 }
 
 export default TodoItem;
+```
 
-
-✅ after ✅
-
+### ✅ after ✅
+```js
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 
@@ -1111,7 +1136,7 @@ test: "hello world"
 };
 
 export default TodoItem;
-
+```
 
 PropTypes 和 DefaultProps 都是用来给组件的 props 进行类型检查和设置默认值的方法。
 
@@ -1131,29 +1156,29 @@ DefaultProps 是一个用于设置组件 props 的默认值的对象。例如，
 
 
 
-加餐内容
+### 加餐内容
 
 
 
 PropTypes.oneOfType 可以用来声明组件的 prop 可以接受多种类型中的一种。例如，如果你的组件有一个名为 "color" 的 prop，你可以使用 PropTypes.oneOfType 来声明它可以接受字符串或者数字类型：
-
+```js
 MyComponent.propTypes = {
   color: PropTypes.oneOfType([
     PropTypes.string,
     PropTypes.number,
   ]),
 };
-
+```
 
 你还可以使用 PropTypes.arrayOf 来声明 prop 接受的是一个指定类型的数组，例如：
-
+```js
 MyComponent.propTypes = {
   colors: PropTypes.arrayOf(PropTypes.string),
 };
-
+```
 
 或者使用 PropTypes.shape 来声明 prop 接受的是一个指定形状的对象，例如：
-
+```js
 import PropTypes from 'prop-types';
 ...
 
@@ -1163,14 +1188,14 @@ MyComponent.propTypes = {
     age: PropTypes.number,
   }),
 };
+```
 
 
 
-
-props, state and render
-
+### props, state and render
 
 
+```js
 import React, { Component } from "react";
 
 class Test extends Component {
@@ -1217,12 +1242,13 @@ class TodoList extends Component {
 }
 
 export default TodoList;
+```
+
+---------
 
 
-
-
-虚拟DOM
-
+## 虚拟DOM
+```js
 1. state 数据
 2. JSX 模版
 3. 数据 + 模版 结合，生成真实的DOM，来显示
@@ -1233,7 +1259,8 @@ export default TodoList;
 第一次生成了一个完整的DOM片段
 第二次生成了一个完整的DOM片段
 第二次的DOM替换第一次的DOM，非常耗性能
-
+```
+```js
 1. state 数据
 2. JSX 模版
 3. 数据 + 模版 结合，生成真实的DOM，来显示
@@ -1245,7 +1272,8 @@ export default TodoList;
 
 缺陷：
 性能的提升并不明显
-
+```
+```js
 1. state 数据
 2. JSX 模版
 3. 数据 + 模版 结合，生成真实的DOM，来显示 
@@ -1257,8 +1285,8 @@ export default TodoList;
 ['div', {id: 'abc'}, ['span', {}, 'bye bye']]
 7. 比较原始虚拟DOM和新的虚拟DOM的区别，找到区别是span中内容（极大的提升性能）
 8. 直接操作DOM，改变span中的内容
-
-
+```
+```js
 1. state 数据
 2. JSX 模版
 
@@ -1280,22 +1308,23 @@ export default TodoList;
 优点：
 1. 性能提升了。
 2. 它使得跨端应用得以实现。React Native
+```
+
+
+---------
+
+## Junior version0.4.7 😂
 
 
 
+### 👌👌 change logs  👌👌
 
-😂😂😂Junior version0.4.7😂😂😂
-
-
-
-👌👌 change logs  👌👌
-
-TodoList 中 ref 的应用
+### TodoList 中 ref 的应用
 
 
 
-⛔️ before ⛔️
-
+### ⛔️ before ⛔️
+```js
 <Fragment>
   <div>
     <label htmlFor="insertArea">输入内容</label>
@@ -1326,12 +1355,12 @@ handleInputChange(e) {
       inputValue: ""
     }));
   }
+```
 
 
 
-
-✅ after ✅
-
+### ✅ after ✅
+```js
 <Fragment>
   <div>
     <label htmlFor="insertArea">输入内容</label>
@@ -1375,10 +1404,10 @@ handleInputChange() {
       }
     );
   }
-
+```
 
 handleBtnClick(）里面的SetState是异步的，所以setState设置了第二个参数是个毁掉函数，解决异步问题，确保页面被render以后再输出clg。
-
+```js
 handleBtnClick() {
     this.setState(
       (prevState) => ({
@@ -1390,7 +1419,7 @@ handleBtnClick() {
       }
     );
   }
-
+```
 
 
 
@@ -1411,13 +1440,14 @@ handleBtnClick() {
 
 
 
+---------
 
-生命周期函数
-
-
-
+## 生命周期函数
 
 
+
+
+```js
 import React, { Component, Fragment } from "react";
 import TodoItem from "./TodoItem";
 import "./style.css";
@@ -1479,9 +1509,9 @@ class TodoList extends Component {
 }
 
 export default TodoList;
+```
 
-
-React 的生命周期函数是指在组件的不同阶段执行的函数。下面是常用的生命周期函数的中文名称：
+### React 的生命周期函数是指在组件的不同阶段执行的函数。下面是常用的生命周期函数的中文名称：
 
 
 
@@ -1501,22 +1531,23 @@ getSnapshotBeforeUpdate()：在更新发生之前获取快照的机会。
 
 
 
-所有生命周期函数都可以不存在，但是必须有rende()存在
+### 所有生命周期函数都可以不存在，但是必须有rende()存在
 
 
 
 
 
+---------
 
 
-😂😂😂Junior version0.4.9😂😂😂
+## Junior version0.4.9 😂
 
 
 
 做了不少改动了，先传上来完整的0.4.9记录一下。
 
 
-
+```js
 TodoLIst.js
 
 import React, { Component, Fragment } from "react";
@@ -1602,10 +1633,10 @@ class TodoList extends Component {
 }
 
 export default TodoList;
-
+```
 
 TodoItem.js
-
+```js
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 
@@ -1641,10 +1672,10 @@ index: PropTypes.number
 };
 
 export default TodoItem;
+```
 
-
-性能提升
-
+### 性能提升
+```js
 shouldComponentUpdate(nextProps, nextState) {
     if (nextProps.content !== this.props.content) {
       return true;
@@ -1652,6 +1683,7 @@ shouldComponentUpdate(nextProps, nextState) {
       return false;
     }
   }
+```
 这段代码是用来控制组件是否重新渲染的生命周期函数。在组件的状态或者属性发生改变时，React 会调用组件的 render 方法重新渲染组件。但是有时候我们不希望组件重新渲染，这个时候就可以使用 shouldComponentUpdate 方法。
 
 
@@ -1664,7 +1696,7 @@ shouldComponentUpdate 方法接收两个参数：nextProps 和 nextState，它�
 
 
 
-ajax 请求 放在哪里
+### ajax 请求 放在哪里?
 
 
 
@@ -1684,7 +1716,7 @@ Ajax 请求通常是放在组件的生命周期方法中的，例如 componentDi
 
 
 
-调试工具 补充Charles 和 Postman
+### 调试工具 补充Charles 和 Postman
 
 
 
@@ -1704,23 +1736,24 @@ Postman 是一款轻量级的 HTTP 客户端，可以方便地发送 HTTP 请求
 
 
 
+---------
 
-😂😂😂Junior version0.4.10😂😂😂
-
-
-
-
-
-👌👌 change logs  👌👌
+## Junior version0.4.10 😂
 
 
 
-TodoList 中 ajax axios的应用
+
+
+### 👌👌 change logs  👌👌
 
 
 
-⛔️ before ⛔️
+### TodoList 中 ajax axios的应用
 
+
+
+### ⛔️ before ⛔️
+```js
   componentDidMount() {
     axios
       .get("/api/todolist")
@@ -1731,12 +1764,12 @@ TodoList 中 ajax axios的应用
         alert("error");
       });
   }
+```
 
 
 
-
-✅ after ✅
-
+### ✅ after ✅
+```js
   componentDidMount() {
     axios
       .get("/api/todolist")
@@ -1749,21 +1782,20 @@ TodoList 中 ajax axios的应用
         alert("error");
       });
   }
- 
+```
 
 在 componentDidMount 生命周期函数中发送 ajax 请求是一种常见的做法。componentDidMount 是在组件已经挂载到 DOM 上后执行的函数，所以在这里发送 ajax 请求是一个好的选择，因为在组件挂载到 DOM 后才会发送请求，避免了发送请求的浪费。另外，在 componentDidMount 中发送 ajax 请求，也可以保证请求完成后，组件的状态已经被正确地设置。
 
+  
+  
+last edited 1 Jan 2023 
+last edited 4 Jan 2023 
+last edited 8 Jan 2023 
 
+---------
+## 🌈🌈🌈 插入补充零碎知识点 🌈🌈🌈
 
-
-
-4 Jan 2023 last edited
-
-
-
-🌈🌈🌈 插入补充零碎知识点 🌈🌈🌈
-
-
+---------
 
 <Fragment>是React中的一个组件，所以其名称需要首字母大写。这是React中的命名约定，所有的组件名都需要首字母大写。这样可以让React知道这是一个组件，而不是普通的标签。
 
@@ -1772,7 +1804,7 @@ TodoList 中 ajax axios的应用
 React 中使用 className 代替 class 是因为 class 是 JavaScript 中的保留字，与原有的 class 关键字冲突。所以在 React 中使用 className 属性来表示 HTML 元素的 class 属性。
 
 
-
+---------
 
 
 在 React 中，你需要使用 className 属性来添加 CSS 类：
@@ -1780,30 +1812,31 @@ React 中使用 className 代替 class 是因为 class 是 JavaScript 中的保�
 
 
 使用 className 与使用 class 没有任何区别，你可以通过 className 属性为元素添加多个 CSS 类，并使用空格分隔：
-
+```js
 <div className="container blue-background">Hello</div>
+```
 
-
-
+---------
 
 在 React 中，我们使用 htmlFor 来替代 for 属性。这是因为 for 是 JavaScript 的关键字，在 JSX 中会导致语法错误。
 
 
 
 例如，在传统的 HTML 中，我们可能会这样写一个表单：
-
+```js
 <label for="email">Email</label>
 <input type="email" id="email" />
-
+```
 
 在 React 中，我们使用 htmlFor 来替代 for：
-
+```js
 <label htmlFor="email">Email</label>
 <input type="email" id="email" />
+```
 这样就可以避免 for 这个关键字引起的问题，同时使得我们的代码更加符合 JSX 的语法规范。
 
 
-
+---------
 
 
 export default 和 export 区别
@@ -1819,33 +1852,34 @@ export default 是 JavaScript 的一个语法糖，它允许你在模块中指�
 
 
 例如，在模块中使用 export default 导出一个函数：
-
+```js
 export default function add(x, y) {
   return x + y;
 }
-
+```
 
 在其他文件中引用时，可以直接使用函数名来引用：
-
+```js
 import add from './add';
 
 console.log(add(1, 2)); // 3
-
+```
 
 如果你使用 export 而不是 export default 导出函数，那么在其他文件中引用时需要使用大括号：
-
+```js
 export function add(x, y) {
   return x + y;
 }
 import { add } from './add';
 
 console.log(add(1, 2)); // 3
+```
 对于一个模块（文件）中的内容，使用 export 关键字可以将内容导出，使得其他文件可以使用 import 关键字来引入这些内容。使用 export default 关键字可以将模块中的一个内容默认导出，其他文件可以使用任意名称来引入这个内容。
 
 
 
 举个例子，在一个文件 math.js 中有如下内容：
-
+```js
 export function add(a, b) {
   return a + b;
 }
@@ -1858,22 +1892,22 @@ export default function multiply(a, b) {
   return a * b;
 }
 
-
+```
 在另一个文件中，我们可以这样引入这些内容：
-
+```js
 import { add, subtract } from "./math";
 import multiply from "./math";
 
 console.log(add(1, 2)); // 3
 console.log(subtract(1, 2)); // -1
 console.log(multiply(2, 3)); // 6
-
+```
 
 区别就是，使用 export 导出的内容，在其他文件中必须使用大括号将它们括起来，并且使用原来的名称来引入。使用 export default 导出的内容，在其他文件中可以使用任意名称来引入。
 
 
 
-
+---------
 
 原生应用
 
