@@ -3,7 +3,7 @@
 - [Component的导入](#Component的导入)
 - [React项目TodoList](#React项目TodoList)
 - [super(props)](#super应用)
-- [最原始 Junior version0.3.3](#最原始-Junior-version-033)
+- [最原始 Junior version0.3.3](#v033)
 - [immutable](#immutable)
 - [回调函数index相关](#回调函数index相关)
 - [题外话createRoot](#题外话createRoot)
@@ -331,9 +331,9 @@ jsx 语法中保存变量要加花括号。
 
 
 
+### 原始版本v033
+## 最原始 Junior version0.3.3
 
-
-### 最原始 Junior version0.3.3
 (0.3.3前的版本属于基本开发环境准备，没存在我的笔记，记录在了我的sandbox,有需求可以找我要)
 ```js
 import React, { Component, Fragment } from "react";
