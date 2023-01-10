@@ -1,7 +1,7 @@
 # 寒哥手记
 
 - [开发环境搭建](#最开始还是从开发环境搭建开始)
-- [Component 的导入](#Component 的导入)
+- [Component 的导入](#component-的导入)
 - [React 项目 TodoList](#React项目TodoList)
 - [super(props)](#super应用)
 - [最原始 Junior version0.3.3](#跳转1)
